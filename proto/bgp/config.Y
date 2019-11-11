@@ -78,7 +78,7 @@ bgp_proto_start: proto_start BGP {
 
 bgp_loc_opts:
    /* empty */
- | bgp_loc_opts PORT expr { BGP_CFG->local_port = $3; if (($3<1) || ($3>65535)) cf_error("Invalid port number"); }
+ | bgp_loc_opts PORT expr { BGP_CFG->local_port = $3; if ($3>65535) cf_error("Invalid port number"); }
  | bgp_loc_opts AS expr { BGP_CFG->local_as = $3; }
  ;
 
